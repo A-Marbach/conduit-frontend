@@ -1,10 +1,9 @@
-# Build Stage
-FROM node:20 as build
+FROM node:20-alpine as build
 WORKDIR /app
 ENV NODE_OPTIONS=--max-old-space-size=4096
 
 COPY package*.json ./
-RUN rm -rf node_modules package-lock.json && \
+RUN npm pkg delete scripts.prepare && \
     npm install --legacy-peer-deps
 COPY . .
 RUN npm run build
