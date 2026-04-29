@@ -3,8 +3,7 @@ WORKDIR /app
 ENV NODE_OPTIONS=--max-old-space-size=4096
 
 COPY package*.json ./
-RUN npm pkg delete scripts.prepare && \
-    npm install --legacy-peer-deps
+RUN npm install --legacy-peer-deps --ignore-scripts
 COPY . .
 RUN npm run build
 
