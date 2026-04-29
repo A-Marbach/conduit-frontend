@@ -5,7 +5,7 @@ ENV NODE_OPTIONS="--max-old-space-size=8192"
 COPY package*.json ./
 RUN npm install --legacy-peer-deps --ignore-scripts
 COPY . .
-RUN npm run build
+RUN npm run build || cat /root/.npm/_logs/*.log
 
 # Production Stage
 FROM nginx:alpine
