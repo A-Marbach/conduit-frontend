@@ -4,7 +4,7 @@ ENV NODE_OPTIONS="--max-old-space-size=8192"
 ENV HUSKY=0
 
 COPY package*.json ./
-RUN npm install --legacy-peer-deps 2>&1 || (cat /root/.npm/_logs/*.log && exit 1)
+RUN npm install --legacy-peer-deps 
 COPY . .
 RUN npm run build
 
