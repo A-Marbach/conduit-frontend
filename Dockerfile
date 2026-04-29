@@ -1,6 +1,6 @@
 FROM node:20-alpine as build
 WORKDIR /app
-ENV NODE_OPTIONS=--max-old-space-size=4096
+ENV NODE_OPTIONS="--max-old-space-size=8192"
 
 COPY package*.json ./
 RUN npm install --legacy-peer-deps --ignore-scripts
