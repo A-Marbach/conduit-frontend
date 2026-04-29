@@ -1,6 +1,8 @@
 # Build Stage
 FROM node:20 as build
 WORKDIR /app
+ENV NODE_OPTIONS=--max-old-space-size=4096
+
 COPY package*.json ./
 RUN npm install --legacy-peer-deps
 COPY . .
